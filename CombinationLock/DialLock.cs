@@ -25,10 +25,13 @@ namespace CombinationLock
         }
         public int Rotation { get; private set; }
         public int TargetRotation { get; private set; }
+        public int CatchPosition { get; private set; }
+        private Catch catchMech;
 
-        public DialLock(Texture2D tex)
+        public DialLock(Texture2D tex, Texture2D catchTex)
         {
             sprite = new Sprite(tex);
+            catchMech = new Catch(catchTex);
             Rotation = 0;
             //TargetRotation = World.random.Next(0, 180);
             TargetRotation = 90;
@@ -64,16 +67,18 @@ namespace CombinationLock
             {
                 World.dial.UseAutomaticHapticFeedback = false;
             }
+            catchMech.UpdatePosition(Rotation);
         }
 
         public void Update(GameTime gameTime)
         {
-            
+            catchMech.sprite.position = Position;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch);
+            catchMech.Draw(spriteBatch);
         }
     }
 }

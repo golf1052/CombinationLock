@@ -51,7 +51,7 @@ namespace CombinationLock
 
             circle = new Sprite(Content.Load<Texture2D>("circle"));
             circle.position = new Vector2(300);
-            dialLock = new DialLock(Content.Load<Texture2D>("dial"));
+            dialLock = new DialLock(Content.Load<Texture2D>("dial"), Content.Load<Texture2D>("catch"));
             dialLock.Position = new Vector2(300);
         }
 
